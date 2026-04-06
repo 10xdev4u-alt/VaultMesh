@@ -17,15 +17,16 @@ import (
 type HostConfig struct {
 	ListenAddrs []string
 	PrivKey     crypto.PrivKey
+	Bandwidth   *BandwidthManager // Added for bandwidth tracking
 }
 
-// NewHost creates and initializes a libp2p host with TCP, QUIC, and WebRTC transports.
+// NewHost creates and initializes a libp2p host with the provided configuration.
 func NewHost(ctx context.Context, cfg HostConfig) (host.Host, error) {
 	if len(cfg.ListenAddrs) == 0 {
 		cfg.ListenAddrs = []string{
 			"/ip4/0.0.0.0/tcp/0",
 			"/ip4/0.0.0.0/udp/0/quic-v1",
-			"/ip4/0.0.0.0/udp/0/webrtc-direct", // Add WebRTC listen address
+			"/ip4/0.0.0.0/udp/0/webrtc-direct",
 		}
 	}
 
@@ -34,7 +35,7 @@ func NewHost(ctx context.Context, cfg HostConfig) (host.Host, error) {
 		libp2p.ChainOptions(
 			libp2p.Transport(tcp.NewTCPTransport),
 			libp2p.Transport(quic.NewTransport),
-			libp2p.Transport(libp2pwebrtc.New), // Add WebRTC transport
+			libp2p.Transport(libp2pwebrtc.New),
 		),
 	}
 
@@ -43,6 +44,11 @@ func NewHost(ctx context.Context, cfg HostConfig) (host.Host, error) {
 
 	// Add Connection Manager
 	opts = append(opts, ConnMgrOptions(20, 50, time.Minute)...)
+
+	// Add Bandwidth Reporter if provided
+	if cfg.Bandwidth != nil {
+		opts = append(opts, cfg.Bandwidth.Options())
+	}
 
 	if cfg.PrivKey != nil {
 		opts = append(opts, libp2p.Identity(cfg.PrivKey))
