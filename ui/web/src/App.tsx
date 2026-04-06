@@ -5,6 +5,7 @@ import FileManager from './components/FileManager'
 import NetworkGraph from './components/NetworkGraph'
 import PeerExplorer from './components/PeerExplorer'
 import VaultManager from './components/VaultManager'
+import Settings from './components/Settings'
 
 const App = () => {
   return (
@@ -41,7 +42,7 @@ const App = () => {
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 pb-8">
           <div>
             <FileManager />
             <VaultManager />
@@ -49,6 +50,7 @@ const App = () => {
           <div className="flex flex-col">
             <NetworkGraph />
             <PeerExplorer />
+            <Settings />
           </div>
         </div>
       </div>
