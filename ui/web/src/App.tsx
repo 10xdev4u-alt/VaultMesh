@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Server, Shield, Share2 } from 'lucide-react'
+import FileManager from './components/FileManager'
 
 const App = () => {
   return (
@@ -16,8 +17,8 @@ const App = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-8">
-        <motion.div 
+      <div className="flex-1 p-8 overflow-y-auto">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
@@ -36,6 +37,8 @@ const App = () => {
             </div>
           ))}
         </motion.div>
+
+        <FileManager />
       </div>
     </div>
   )
