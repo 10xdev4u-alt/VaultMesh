@@ -1,20 +1,47 @@
 # 🔥 VaultMesh - Decentralized Encrypted P2P Storage System
 
-VaultMesh is a decentralized, encrypted P2P file storage system built on LibP2P. It splits files into chunks using Content-Defined Chunking, encrypts each chunk with layered AES-256-GCM + ChaCha20-Poly1305, applies Reed-Solomon erasure coding for redundancy, and then distributes chunks across a Kademlia DHT peer network via LibP2P.
+VaultMesh is a production-grade, decentralized file storage system built on LibP2P. It splits files into content-defined chunks, encrypts them with layered ciphers, applies Reed-Solomon erasure coding for redundancy, and distributes them across a global Kademlia DHT.
 
-## Key Features
+## 🏗️ Architecture
 
-- **Zero Central Servers:** Entirely peer-to-peer over LibP2P and Kademlia DHT.
-- **End-to-End Encrypted:** Nodes cannot read stored data. Multi-layer encryption and Shamir's Secret Sharing.
-- **Self-Healing:** Automatic health monitoring and re-replication on node failure.
-- **IPFS-Compatible:** CID generation and gateway support.
-- **Private Retrieval:** Onion routing and Private Information Retrieval (PIR) protocols.
-- **Streaming Support:** Real-time progressive decryption pipeline.
+```text
+┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
+│   FILE INPUT    │─────▶│  CDC CHUNKER    │─────▶│ LAYERED ENCRYPT │
+└─────────────────┘      └─────────────────┘      └─────────────────┘
+                                                           │
+                                                           ▼
+┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
+│  DHT DISCOVERY  │◀─────│   DISTRIBUTOR   │◀─────│ REED-SOLOMON EC │
+└─────────────────┘      └─────────────────┘      └─────────────────┘
+         │                        │
+         ▼                        ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                        LIBP2P MESH NETWORK                        │
+└───────────────────────────────────────────────────────────────────┘
+```
 
-## Getting Started
+## 🚀 Key Features
+- **Adaptive Chunking:** Content-Defined Chunking (CDC) for efficient deduplication.
+- **Layered Encryption:** AES-256-GCM + ChaCha20-Poly1305 + Shamir's.
+- **Self-Healing:** Proactive repair of missing shards using predictive failure scoring.
+- **Privacy First:** Onion-routed retrieval, blind DHT indexing, and Private Information Retrieval (PIR).
+- **Modern UIs:** Sleek Terminal UI (Bubbletea) and Web Dashboard (React/Vite).
 
+## 🛠️ Getting Started
+
+### Prerequisites
+- Go 1.22+
+- Node.js (for Web UI)
+
+### Installation
 1. Clone the repository
-2. Run `make deps`
-3. Run `make build`
+2. Run `make deps` to install Go dependencies
+3. Run `make build` to compile the `vaultmesh` binary
 
-See [TODO.md](./TODO.md) for the roadmap of this project.
+### Usage
+- Start the daemon: `./vaultmesh daemon start`
+- Upload a file: `./vaultmesh upload myfile.dat`
+- Access the Web UI: `http://localhost:3000`
+
+## 📜 Roadmap
+See [TODO.md](./TODO.md) for the detailed 120-commit development plan.
