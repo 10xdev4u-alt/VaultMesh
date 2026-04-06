@@ -6,28 +6,25 @@ import (
 	"sort"
 	"time"
 
+	"github.com/10xdev4u-alt/VaultMesh/internal/incentive"
 	"github.com/10xdev4u-alt/VaultMesh/internal/network"
 	"github.com/libp2p/go-libp2p/core/host"
 	"github.com/libp2p/go-libp2p/core/peer"
 )
 
-// PeerLatency represents a peer and its measured connection latency.
-type PeerLatency struct {
-	ID      peer.ID
-	Latency time.Duration
-}
-
 // PlacementStrategy handles the selection of peers for data shard distribution.
 type PlacementStrategy struct {
-	h      host.Host
-	scorer *network.PeerScoreManager
+	h          host.Host
+	scorer     *network.PeerScoreManager
+	repManager *incentive.ReputationManager
 }
 
-// NewPlacementStrategy creates a new PlacementStrategy with scoring support.
-func NewPlacementStrategy(h host.Host, scorer *network.PeerScoreManager) *PlacementStrategy {
+// NewPlacementStrategy creates a new PlacementStrategy with reputation support.
+func NewPlacementStrategy(h host.Host, scorer *network.PeerScoreManager, rm *incentive.ReputationManager) *PlacementStrategy {
 	return &PlacementStrategy{
-		h:      h,
-		scorer: scorer,
+		h:          h,
+		scorer:     scorer,
+		repManager: rm,
 	}
 }
 
@@ -51,19 +48,23 @@ func (s *PlacementStrategy) SelectSmartPeers(ctx context.Context, n int) ([]peer
 	candidates := make([]candidate, 0, len(peers))
 	for _, p := range peers {
 		if s.scorer != nil && s.scorer.IsBlacklisted(p) {
-			continue // Skip blacklisted peers
+			continue
 		}
 
 		lat := s.h.Peerstore().LatencyByPeer(p)
-		
-		// Heuristic score: lower is better. 
-		// We use latency in ms as a baseline.
 		latMs := float64(lat.Milliseconds())
 		if latMs == 0 {
-			latMs = 500 // Default for unknown latency
+			latMs = 500
 		}
 
-		hScore := latMs
+		// Apply reputation boost
+		repScore := 0.5
+		if s.repManager != nil {
+			repScore = s.repManager.GetScore(p.String())
+		}
+
+		// Higher reputation = lower (better) score
+		hScore := latMs / (1.0 + repScore)
 		
 		candidates = append(candidates, candidate{id: p, score: hScore})
 	}
