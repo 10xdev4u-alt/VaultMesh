@@ -9,7 +9,7 @@
 - [x] 006 - crypto: implement layered dual encryption pipeline
 - [x] 007 - crypto: add Shamir's Secret Sharing (k-of-n key splitting)
 - [x] 008 - crypto: key derivation with HKDF + per-chunk unique keys
-- [ ] 009 - crypto: keystore with encrypted local key management
+- [x] 009 - crypto: keystore with encrypted local key management
 - [ ] 010 - chunker: implement fixed-size chunking algorithm
 - [ ] 011 - chunker: add content-defined chunking (CDC/Rabin fingerprint)
 - [ ] 012 - chunker: implement chunk-level deduplication with blake3
