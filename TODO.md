@@ -23,7 +23,7 @@
 - [x] 018 - network: Kademlia DHT setup and configuration
 - [x] 019 - network: mDNS local peer discovery
 - [x] 020 - network: bootstrap peer list + DHT bootstrap
-- [ ] 021 - network: GossipSub for pub/sub messaging
+- [x] 021 - network: GossipSub for pub/sub messaging
 - [ ] 022 - network: custom protocol definitions (upload/download/health)
 - [ ] 023 - network: NAT traversal with AutoNAT + relay
 - [ ] 024 - network: circuit relay for firewalled peers
