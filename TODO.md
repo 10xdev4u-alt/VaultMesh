@@ -95,7 +95,7 @@
 - [x] 080 - api: peer management endpoints
 - [x] 081 - api: WebSocket server for real-time events
 - [x] 082 - api: gRPC server + proto definitions
-- [ ] 083 - api: API key authentication middleware
+- [x] 083 - api: API key authentication middleware
 - [ ] 084 - api: rate limiting + request validation
 
 ## PHASE 8: TERMINAL UI (Commits 85-93)

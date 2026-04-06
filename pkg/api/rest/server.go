@@ -32,13 +32,19 @@ func NewServer(port int) *Server {
 }
 
 func (s *Server) routes() {
-	s.router.POST("/upload", s.UploadHandler)
-	s.router.GET("/download/:cid", s.DownloadHandler)
-	s.router.GET("/files", s.ListFilesHandler)
-	s.router.GET("/search", s.SearchHandler)
-	s.router.DELETE("/files/:cid", s.DeleteFileHandler)
-	s.router.GET("/peers", s.ListPeersHandler)
-	s.router.GET("/peers/:id/stats", s.PeerStatsHandler)
+	s.router.GET("/health", func(c *gin.Context) { c.Status(http.StatusOK) })
+
+	authorized := s.router.Group("/")
+	authorized.Use(AuthMiddleware("default-secret-key"))
+	{
+		authorized.POST("/upload", s.UploadHandler)
+		authorized.GET("/download/:cid", s.DownloadHandler)
+		authorized.GET("/files", s.ListFilesHandler)
+		authorized.GET("/search", s.SearchHandler)
+		authorized.DELETE("/files/:cid", s.DeleteFileHandler)
+		authorized.GET("/peers", s.ListPeersHandler)
+		authorized.GET("/peers/:id/stats", s.PeerStatsHandler)
+	}
 }
 
 // Start begins listening for API requests.
