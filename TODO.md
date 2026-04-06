@@ -5,7 +5,7 @@
 - [x] 002 - config: base configuration system with YAML/env support
 - [x] 003 - config: add validation, defaults, and hot-reload support
 - [x] 004 - crypto: implement AES-256-GCM encryption/decryption
-- [ ] 005 - crypto: add ChaCha20-Poly1305 as secondary cipher
+- [x] 005 - crypto: add ChaCha20-Poly1305 as secondary cipher
 - [ ] 006 - crypto: implement layered dual encryption pipeline
 - [ ] 007 - crypto: add Shamir's Secret Sharing (k-of-n key splitting)
 - [ ] 008 - crypto: key derivation with HKDF + per-chunk unique keys
