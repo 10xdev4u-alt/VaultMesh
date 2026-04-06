@@ -38,7 +38,7 @@
 - [x] 031 - distributor: Reed-Solomon erasure coding implementation
 - [x] 032 - distributor: configurable redundancy (N data + M parity)
 - [x] 033 - distributor: chunk placement strategy (geo + latency aware)
-- [ ] 034 - distributor: parallel chunk upload to multiple peers
+- [x] 034 - distributor: parallel chunk upload to multiple peers
 - [ ] 035 - distributor: upload progress tracking + resumable uploads
 - [ ] 036 - distributor: file manifest creation and DHT publishing
 - [ ] 037 - distributor: IPFS-compatible CID generation
