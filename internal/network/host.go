@@ -3,6 +3,7 @@ package network
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/libp2p/go-libp2p"
 	"github.com/libp2p/go-libp2p/core/crypto"
@@ -17,7 +18,7 @@ type HostConfig struct {
 	PrivKey     crypto.PrivKey
 }
 
-// NewHost creates and initializes a libp2p host with the provided configuration and NAT traversal enabled.
+// NewHost creates and initializes a libp2p host with the provided configuration.
 func NewHost(ctx context.Context, cfg HostConfig) (host.Host, error) {
 	if len(cfg.ListenAddrs) == 0 {
 		cfg.ListenAddrs = []string{
@@ -34,8 +35,11 @@ func NewHost(ctx context.Context, cfg HostConfig) (host.Host, error) {
 		),
 	}
 
-	// Add NAT traversal and Relay options
+	// Add NAT and Relay support
 	opts = append(opts, NATOptions()...)
+
+	// Add Connection Manager (e.g., 20 low, 50 high connections)
+	opts = append(opts, ConnMgrOptions(20, 50, time.Minute)...)
 
 	if cfg.PrivKey != nil {
 		opts = append(opts, libp2p.Identity(cfg.PrivKey))
