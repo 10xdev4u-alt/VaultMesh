@@ -126,7 +126,7 @@
 - [x] 105 - cli: shell completion (bash/zsh/fish)
 - [x] 106 - docs: full README with architecture diagrams
 - [x] 107 - docs: API documentation with examples
-- [ ] 108 - docs: security model documentation
+- [x] 108 - docs: security model documentation
 - [ ] 109 - docs: protocol specification
 - [ ] 110 - test: unit tests for crypto package (>90% coverage)
 - [ ] 111 - test: unit tests for chunker + storage
