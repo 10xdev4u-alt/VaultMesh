@@ -1,0 +1,33 @@
+# Binaries
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Data & Configs
+*.db
+*.log
+.env
+data/
+keys/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# Go
+vendor/
+go.work
+go.work.sum
+
+# Tmp
+tmp/
+temp/
+coverage.out
