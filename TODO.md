@@ -35,7 +35,7 @@
 - [x] 030 - network: peer exchange protocol (PEX)
 
 ## PHASE 3: DISTRIBUTION ENGINE (Commits 31-45)
-- [ ] 031 - distributor: Reed-Solomon erasure coding implementation
+- [x] 031 - distributor: Reed-Solomon erasure coding implementation
 - [ ] 032 - distributor: configurable redundancy (N data + M parity)
 - [ ] 033 - distributor: chunk placement strategy (geo + latency aware)
 - [ ] 034 - distributor: parallel chunk upload to multiple peers
