@@ -2,6 +2,7 @@ package incentive
 
 import (
 	"sync"
+	"time"
 )
 
 // ReputationScore tracks the long-term trustworthiness of a peer.
@@ -49,4 +50,21 @@ func (m *ReputationManager) RecordSuccess(peerID string) {
 	if s.Score > 1.0 {
 		s.Score = 1.0
 	}
+}
+
+// RecordSybilCheck ensures that a peer's reputation growth is gated by time.
+func (m *ReputationManager) RecordSybilCheck(peerID string) bool {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+	s, exists := m.scores[peerID]
+	if !exists {
+		return false
+	}
+
+	// New peers cannot exceed 0.6 score in their first 24 hours.
+	if s.TotalUptime < float64(24*time.Hour) && s.Score > 0.6 {
+		s.Score = 0.6
+		return true
+	}
+	return false
 }

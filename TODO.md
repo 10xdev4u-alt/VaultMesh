@@ -83,7 +83,7 @@
 - [x] 070 - incentive: proof verification without blockchain
 - [x] 071 - incentive: bandwidth + storage credit tracking
 - [x] 072 - incentive: reputation-based peer selection boost
-- [ ] 073 - incentive: anti-sybil measures
+- [x] 073 - incentive: anti-sybil measures
 - [ ] 074 - incentive: storage commitment announcements
 - [ ] 075 - incentive: credit ledger with cryptographic receipts
 
