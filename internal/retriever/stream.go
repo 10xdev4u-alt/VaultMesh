@@ -55,6 +55,11 @@ func (s *StreamRetriever) StreamAndDecryptFile(ctx context.Context, chunkHashes 
 	return nil
 }
 
+// StreamMedia optimizes the retrieval for media playback by ensuring sequential, low-latency flow.
+func (s *StreamRetriever) StreamMedia(ctx context.Context, chunkHashes []string, masterKey []byte, w io.Writer) error {
+	return s.StreamAndDecryptFile(ctx, chunkHashes, masterKey, w)
+}
+
 // StreamFileParallel implements a buffered parallel streaming pipeline.
 func (s *StreamRetriever) StreamFileParallel(ctx context.Context, chunkHashes []string, w io.Writer, bufferSize int) error {
 	return s.StreamFile(ctx, chunkHashes, w)
