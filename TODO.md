@@ -4,7 +4,7 @@
 - [x] 001 - init: project scaffold, go.mod, Makefile, .gitignore, README.md, TODO.md
 - [x] 002 - config: base configuration system with YAML/env support
 - [x] 003 - config: add validation, defaults, and hot-reload support
-- [ ] 004 - crypto: implement AES-256-GCM encryption/decryption
+- [x] 004 - crypto: implement AES-256-GCM encryption/decryption
 - [ ] 005 - crypto: add ChaCha20-Poly1305 as secondary cipher
 - [ ] 006 - crypto: implement layered dual encryption pipeline
 - [ ] 007 - crypto: add Shamir's Secret Sharing (k-of-n key splitting)
