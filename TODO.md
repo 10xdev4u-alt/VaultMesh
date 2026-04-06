@@ -69,7 +69,7 @@
 - [x] 058 - healing: predictive failure scoring per node
 - [x] 059 - healing: repair scheduler with priority queue
 - [x] 060 - healing: cross-shard repair without full decode
-- [ ] 061 - sync: delta sync engine (chunk-level diffing)
+- [x] 061 - sync: delta sync engine (chunk-level diffing)
 - [ ] 062 - sync: version history with merkle DAG
 - [ ] 063 - sync: conflict detection and resolution
 
