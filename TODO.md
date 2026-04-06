@@ -13,7 +13,7 @@
 - [x] 010 - chunker: implement fixed-size chunking algorithm
 - [x] 011 - chunker: add content-defined chunking (CDC/Rabin fingerprint)
 - [x] 012 - chunker: implement chunk-level deduplication with blake3
-- [ ] 013 - chunker: add chunk reassembly and integrity verification
+- [x] 013 - chunker: add chunk reassembly and integrity verification
 - [ ] 014 - storage: define storage interface + BadgerDB implementation
 - [ ] 015 - storage: chunk store with metadata indexing
 
