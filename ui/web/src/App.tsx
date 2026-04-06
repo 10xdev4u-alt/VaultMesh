@@ -4,6 +4,7 @@ import { Server, Shield, Share2 } from 'lucide-react'
 import FileManager from './components/FileManager'
 import NetworkGraph from './components/NetworkGraph'
 import PeerExplorer from './components/PeerExplorer'
+import VaultManager from './components/VaultManager'
 
 const App = () => {
   return (
@@ -41,7 +42,10 @@ const App = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-          <FileManager />
+          <div>
+            <FileManager />
+            <VaultManager />
+          </div>
           <div className="flex flex-col">
             <NetworkGraph />
             <PeerExplorer />

@@ -117,7 +117,7 @@
 - [x] 098 - web: real-time transfer progress with WebSocket
 - [x] 099 - web: network graph visualization (D3.js)
 - [x] 100 - web: peer explorer with interactive map
-- [ ] 101 - web: vault management UI
+- [x] 101 - web: vault management UI
 - [ ] 102 - web: settings + key management UI
 - [ ] 103 - web: mobile responsive + PWA support
 
