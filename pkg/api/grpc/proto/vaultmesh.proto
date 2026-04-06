@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package vaultmesh;
+
+option go_package = "github.com/10xdev4u-alt/VaultMesh/pkg/api/grpc/proto";
+
+service VaultMeshService {
+  rpc GetNodeInfo (NodeInfoRequest) returns (NodeInfoResponse);
+}
+
+message NodeInfoRequest {}
+
+message NodeInfoResponse {
+  string peer_id = 1;
+  int32 connected_peers = 2;
+}

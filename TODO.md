@@ -94,7 +94,7 @@
 - [x] 079 - api: file listing, search, delete endpoints
 - [x] 080 - api: peer management endpoints
 - [x] 081 - api: WebSocket server for real-time events
-- [ ] 082 - api: gRPC server + proto definitions
+- [x] 082 - api: gRPC server + proto definitions
 - [ ] 083 - api: API key authentication middleware
 - [ ] 084 - api: rate limiting + request validation
 
