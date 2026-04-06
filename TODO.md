@@ -8,7 +8,7 @@
 - [x] 005 - crypto: add ChaCha20-Poly1305 as secondary cipher
 - [x] 006 - crypto: implement layered dual encryption pipeline
 - [x] 007 - crypto: add Shamir's Secret Sharing (k-of-n key splitting)
-- [ ] 008 - crypto: key derivation with HKDF + per-chunk unique keys
+- [x] 008 - crypto: key derivation with HKDF + per-chunk unique keys
 - [ ] 009 - crypto: keystore with encrypted local key management
 - [ ] 010 - chunker: implement fixed-size chunking algorithm
 - [ ] 011 - chunker: add content-defined chunking (CDC/Rabin fingerprint)
