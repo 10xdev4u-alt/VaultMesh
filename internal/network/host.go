@@ -8,6 +8,7 @@ import (
 	"github.com/libp2p/go-libp2p"
 	"github.com/libp2p/go-libp2p/core/crypto"
 	"github.com/libp2p/go-libp2p/core/host"
+	libp2pwebrtc "github.com/libp2p/go-libp2p/p2p/transport/webrtc"
 	"github.com/libp2p/go-libp2p/p2p/transport/quic"
 	"github.com/libp2p/go-libp2p/p2p/transport/tcp"
 )
@@ -18,12 +19,13 @@ type HostConfig struct {
 	PrivKey     crypto.PrivKey
 }
 
-// NewHost creates and initializes a libp2p host with the provided configuration.
+// NewHost creates and initializes a libp2p host with TCP, QUIC, and WebRTC transports.
 func NewHost(ctx context.Context, cfg HostConfig) (host.Host, error) {
 	if len(cfg.ListenAddrs) == 0 {
 		cfg.ListenAddrs = []string{
 			"/ip4/0.0.0.0/tcp/0",
 			"/ip4/0.0.0.0/udp/0/quic-v1",
+			"/ip4/0.0.0.0/udp/0/webrtc-direct", // Add WebRTC listen address
 		}
 	}
 
@@ -32,13 +34,14 @@ func NewHost(ctx context.Context, cfg HostConfig) (host.Host, error) {
 		libp2p.ChainOptions(
 			libp2p.Transport(tcp.NewTCPTransport),
 			libp2p.Transport(quic.NewTransport),
+			libp2p.Transport(libp2pwebrtc.New), // Add WebRTC transport
 		),
 	}
 
 	// Add NAT and Relay support
 	opts = append(opts, NATOptions()...)
 
-	// Add Connection Manager (e.g., 20 low, 50 high connections)
+	// Add Connection Manager
 	opts = append(opts, ConnMgrOptions(20, 50, time.Minute)...)
 
 	if cfg.PrivKey != nil {

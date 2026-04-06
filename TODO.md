@@ -29,7 +29,7 @@
 - [x] 024 - network: circuit relay for firewalled peers
 - [x] 025 - network: connection manager with limits + scoring
 - [x] 026 - network: peer scoring and blacklisting
-- [ ] 027 - network: WebRTC transport fallback
+- [x] 027 - network: WebRTC transport fallback
 - [ ] 028 - network: bandwidth measurement + throttling
 - [ ] 029 - network: network topology mapper
 - [ ] 030 - network: peer exchange protocol (PEX)
