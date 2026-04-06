@@ -21,7 +21,7 @@
 - [x] 016 - network: LibP2P host initialization with QUIC + TCP
 - [x] 017 - network: identity management (PeerID, keypairs)
 - [x] 018 - network: Kademlia DHT setup and configuration
-- [ ] 019 - network: mDNS local peer discovery
+- [x] 019 - network: mDNS local peer discovery
 - [ ] 020 - network: bootstrap peer list + DHT bootstrap
 - [ ] 021 - network: GossipSub for pub/sub messaging
 - [ ] 022 - network: custom protocol definitions (upload/download/health)
