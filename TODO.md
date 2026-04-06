@@ -46,8 +46,8 @@
 - [x] 039 - distributor: smart peer selection algorithm
 - [x] 040 - distributor: upload pipeline with backpressure
 - [x] 041 - distributor: chunk verification after upload
-- [ ] 042 - distributor: metadata encryption before DHT storage
-- [ ] 043 - retriever: basic chunk retrieval from DHT
+- [x] 042 - distributor: metadata encryption before DHT storage
+- [x] 043 - retriever: basic chunk retrieval from DHT
 - [ ] 044 - retriever: parallel multi-peer retrieval
 - [ ] 045 - retriever: streaming retrieval pipeline
 
