@@ -119,7 +119,7 @@
 - [x] 100 - web: peer explorer with interactive map
 - [x] 101 - web: vault management UI
 - [x] 102 - web: settings + key management UI
-- [ ] 103 - web: mobile responsive + PWA support
+- [x] 103 - web: mobile responsive + PWA support
 
 ## PHASE 10: POLISH & RELEASE (Commits 104-120)
 - [ ] 104 - cli: complete Cobra CLI with all subcommands
