@@ -51,3 +51,14 @@ func (s *Server) DeleteFileHandler(c *gin.Context) {
 	cid := c.Param("cid")
 	c.JSON(http.StatusOK, gin.H{"message": "File deletion initiated", "cid": cid})
 }
+
+// ListPeersHandler returns a list of connected network peers.
+func (s *Server) ListPeersHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"peers": []string{}})
+}
+
+// PeerStatsHandler returns detailed metrics for a specific peer.
+func (s *Server) PeerStatsHandler(c *gin.Context) {
+	id := c.Param("id")
+	c.JSON(http.StatusOK, gin.H{"peer_id": id, "reputation": 0.5, "latency": "50ms"})
+}

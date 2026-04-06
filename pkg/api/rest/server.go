@@ -37,6 +37,8 @@ func (s *Server) routes() {
 	s.router.GET("/files", s.ListFilesHandler)
 	s.router.GET("/search", s.SearchHandler)
 	s.router.DELETE("/files/:cid", s.DeleteFileHandler)
+	s.router.GET("/peers", s.ListPeersHandler)
+	s.router.GET("/peers/:id/stats", s.PeerStatsHandler)
 }
 
 // Start begins listening for API requests.
