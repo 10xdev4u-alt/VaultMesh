@@ -34,10 +34,27 @@ var uploadCmd = &cobra.Command{
 	},
 }
 
+var completionCmd = &cobra.Command{
+	Use:   "completion [bash|zsh|fish|powershell]",
+	Short: "Generate completion script",
+	Args:  cobra.ExactArgs(1),
+	Run: func(cmd *cobra.Command, args []string) {
+		switch args[0] {
+		case "bash":
+			rootCmd.GenBashCompletion(os.Stdout)
+		case "zsh":
+			rootCmd.GenZshCompletion(os.Stdout)
+		case "fish":
+			rootCmd.GenFishCompletion(os.Stdout, true)
+		}
+	},
+}
+
 func init() {
 	daemonCmd.AddCommand(startCmd)
 	rootCmd.AddCommand(daemonCmd)
 	rootCmd.AddCommand(uploadCmd)
+	rootCmd.AddCommand(completionCmd)
 }
 
 func main() {

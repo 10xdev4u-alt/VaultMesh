@@ -123,7 +123,7 @@
 
 ## PHASE 10: POLISH & RELEASE (Commits 104-120)
 - [x] 104 - cli: complete Cobra CLI with all subcommands
-- [ ] 105 - cli: shell completion (bash/zsh/fish)
+- [x] 105 - cli: shell completion (bash/zsh/fish)
 - [ ] 106 - docs: full README with architecture diagrams
 - [ ] 107 - docs: API documentation with examples
 - [ ] 108 - docs: security model documentation
