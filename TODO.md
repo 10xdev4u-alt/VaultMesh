@@ -15,7 +15,7 @@
 - [x] 012 - chunker: implement chunk-level deduplication with blake3
 - [x] 013 - chunker: add chunk reassembly and integrity verification
 - [x] 014 - storage: define storage interface + BadgerDB implementation
-- [ ] 015 - storage: chunk store with metadata indexing
+- [x] 015 - storage: chunk store with metadata indexing
 
 ## PHASE 2: NETWORK LAYER (Commits 16-30)
 - [ ] 016 - network: LibP2P host initialization with QUIC + TCP
