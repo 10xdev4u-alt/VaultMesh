@@ -59,7 +59,7 @@
 - [x] 050 - retriever: download resume from checkpoint
 - [x] 051 - retriever: streaming decrypt pipeline (decrypt on-the-fly)
 - [x] 052 - retriever: video/audio progressive streaming support
-- [ ] 053 - retriever: IPFS gateway compatibility layer
+- [x] 053 - retriever: IPFS gateway compatibility layer
 
 ## PHASE 5: SELF-HEALING & ADVANCED (Commits 54-63)
 - [ ] 054 - healing: node health monitoring daemon
