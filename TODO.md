@@ -127,7 +127,7 @@
 - [x] 106 - docs: full README with architecture diagrams
 - [x] 107 - docs: API documentation with examples
 - [x] 108 - docs: security model documentation
-- [ ] 109 - docs: protocol specification
+- [x] 109 - docs: protocol specification
 - [ ] 110 - test: unit tests for crypto package (>90% coverage)
 - [ ] 111 - test: unit tests for chunker + storage
 - [ ] 112 - test: integration tests for network layer
