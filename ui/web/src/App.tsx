@@ -2,10 +2,12 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Server, Shield, Share2 } from 'lucide-react'
 import FileManager from './components/FileManager'
+import NetworkGraph from './components/NetworkGraph'
+import PeerExplorer from './components/PeerExplorer'
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-vault-dark flex text-white">
+    <div className="min-h-screen bg-vault-dark flex text-white font-sans">
       {/* Sidebar */}
       <div className="w-64 glass m-4 rounded-2xl p-6 hidden md:block">
         <h1 className="text-2xl font-bold text-vault-purple mb-8">VaultMesh</h1>
@@ -38,7 +40,13 @@ const App = () => {
           ))}
         </motion.div>
 
-        <FileManager />
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+          <FileManager />
+          <div className="flex flex-col">
+            <NetworkGraph />
+            <PeerExplorer />
+          </div>
+        </div>
       </div>
     </div>
   )
