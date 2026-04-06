@@ -28,7 +28,7 @@
 - [x] 023 - network: NAT traversal with AutoNAT + relay
 - [x] 024 - network: circuit relay for firewalled peers
 - [x] 025 - network: connection manager with limits + scoring
-- [ ] 026 - network: peer scoring and blacklisting
+- [x] 026 - network: peer scoring and blacklisting
 - [ ] 027 - network: WebRTC transport fallback
 - [ ] 028 - network: bandwidth measurement + throttling
 - [ ] 029 - network: network topology mapper
