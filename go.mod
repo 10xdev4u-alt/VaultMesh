@@ -6,6 +6,7 @@ require (
 	github.com/dgraph-io/badger/v4 v4.9.1
 	github.com/fsnotify/fsnotify v1.9.0
 	github.com/hashicorp/vault v1.21.4
+	github.com/klauspost/reedsolomon v1.13.3
 	github.com/libp2p/go-libp2p v0.48.0
 	github.com/libp2p/go-libp2p-kad-dht v0.39.0
 	github.com/libp2p/go-libp2p-pubsub v0.15.0
