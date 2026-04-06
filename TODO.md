@@ -66,7 +66,7 @@
 - [x] 055 - healing: heartbeat protocol + failure detection
 - [x] 056 - healing: chunk availability scanner
 - [x] 057 - healing: automatic re-replication on node failure
-- [ ] 058 - healing: predictive failure scoring per node
+- [x] 058 - healing: predictive failure scoring per node
 - [ ] 059 - healing: repair scheduler with priority queue
 - [ ] 060 - healing: cross-shard repair without full decode
 - [ ] 061 - sync: delta sync engine (chunk-level diffing)
