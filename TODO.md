@@ -26,7 +26,7 @@
 - [x] 021 - network: GossipSub for pub/sub messaging
 - [x] 022 - network: custom protocol definitions (upload/download/health)
 - [x] 023 - network: NAT traversal with AutoNAT + relay
-- [ ] 024 - network: circuit relay for firewalled peers
+- [x] 024 - network: circuit relay for firewalled peers
 - [ ] 025 - network: connection manager with limits + scoring
 - [ ] 026 - network: peer scoring and blacklisting
 - [ ] 027 - network: WebRTC transport fallback
