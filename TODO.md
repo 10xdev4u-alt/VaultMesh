@@ -10,8 +10,8 @@
 - [x] 007 - crypto: add Shamir's Secret Sharing (k-of-n key splitting)
 - [x] 008 - crypto: key derivation with HKDF + per-chunk unique keys
 - [x] 009 - crypto: keystore with encrypted local key management
-- [ ] 010 - chunker: implement fixed-size chunking algorithm
-- [ ] 011 - chunker: add content-defined chunking (CDC/Rabin fingerprint)
+- [x] 010 - chunker: implement fixed-size chunking algorithm
+- [x] 011 - chunker: add content-defined chunking (CDC/Rabin fingerprint)
 - [ ] 012 - chunker: implement chunk-level deduplication with blake3
 - [ ] 013 - chunker: add chunk reassembly and integrity verification
 - [ ] 014 - storage: define storage interface + BadgerDB implementation
