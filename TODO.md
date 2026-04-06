@@ -70,7 +70,7 @@
 - [x] 059 - healing: repair scheduler with priority queue
 - [x] 060 - healing: cross-shard repair without full decode
 - [x] 061 - sync: delta sync engine (chunk-level diffing)
-- [ ] 062 - sync: version history with merkle DAG
+- [x] 062 - sync: version history with merkle DAG
 - [ ] 063 - sync: conflict detection and resolution
 
 ## PHASE 6: COLLABORATIVE VAULTS & INCENTIVE (Commits 64-75)
