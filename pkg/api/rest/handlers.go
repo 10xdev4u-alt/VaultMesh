@@ -6,6 +6,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// UploadRequest defines the schema for file upload metadata.
+type UploadRequest struct {
+	Name string `json:"name" binding:"required"`
+}
+
 // UploadHandler handles file uploads via multipart form.
 func (s *Server) UploadHandler(c *gin.Context) {
 	file, err := c.FormFile("file")

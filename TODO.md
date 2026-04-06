@@ -96,7 +96,7 @@
 - [x] 081 - api: WebSocket server for real-time events
 - [x] 082 - api: gRPC server + proto definitions
 - [x] 083 - api: API key authentication middleware
-- [ ] 084 - api: rate limiting + request validation
+- [x] 084 - api: rate limiting + request validation
 
 ## PHASE 8: TERMINAL UI (Commits 85-93)
 - [ ] 085 - tui: Bubbletea app skeleton + routing
