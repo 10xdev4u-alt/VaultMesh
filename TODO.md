@@ -40,7 +40,7 @@
 - [x] 033 - distributor: chunk placement strategy (geo + latency aware)
 - [x] 034 - distributor: parallel chunk upload to multiple peers
 - [x] 035 - distributor: upload progress tracking + resumable uploads
-- [ ] 036 - distributor: file manifest creation and DHT publishing
+- [x] 036 - distributor: file manifest creation and DHT publishing
 - [ ] 037 - distributor: IPFS-compatible CID generation
 - [ ] 038 - distributor: replication manager + target replication factor
 - [ ] 039 - distributor: smart peer selection algorithm

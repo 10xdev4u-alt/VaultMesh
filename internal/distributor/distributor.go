@@ -8,6 +8,8 @@ import (
 
 	"github.com/10xdev4u-alt/VaultMesh/internal/config"
 	"github.com/10xdev4u-alt/VaultMesh/internal/network"
+	"github.com/10xdev4u-alt/VaultMesh/internal/storage"
+	dht "github.com/libp2p/go-libp2p-kad-dht"
 	"github.com/libp2p/go-libp2p/core/host"
 	"github.com/libp2p/go-libp2p/core/peer"
 )
@@ -98,4 +100,19 @@ func (d *Distributor) uploadShard(ctx context.Context, p peer.ID, data []byte) e
 
 	_, err = s.Write(data)
 	return err
+}
+
+// PublishManifest saves the file manifest to the Kademlia DHT for global discovery.
+func (d *Distributor) PublishManifest(ctx context.Context, kdht *dht.IpfsDHT, fileID string, m *storage.Manifest) error {
+	data, err := m.Marshal()
+	if err != nil {
+		return err
+	}
+
+	// Use the fileID (hash of the name or CID) as the key in the DHT
+	if err := kdht.PutValue(ctx, "/vaultmesh/manifests/"+fileID, data); err != nil {
+		return fmt.Errorf("failed to publish manifest to dht: %w", err)
+	}
+
+	return nil
 }
