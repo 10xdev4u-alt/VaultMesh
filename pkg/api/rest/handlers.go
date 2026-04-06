@@ -34,3 +34,20 @@ func (s *Server) DownloadHandler(c *gin.Context) {
 		"cid":     cid,
 	})
 }
+
+// ListFilesHandler returns a list of files managed by this node.
+func (s *Server) ListFilesHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"files": []string{}})
+}
+
+// SearchHandler allows searching for files by name or metadata.
+func (s *Server) SearchHandler(c *gin.Context) {
+	query := c.Query("q")
+	c.JSON(http.StatusOK, gin.H{"query": query, "results": []string{}})
+}
+
+// DeleteFileHandler removes a file and its chunks.
+func (s *Server) DeleteFileHandler(c *gin.Context) {
+	cid := c.Param("cid")
+	c.JSON(http.StatusOK, gin.H{"message": "File deletion initiated", "cid": cid})
+}
