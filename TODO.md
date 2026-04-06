@@ -41,7 +41,7 @@
 - [x] 034 - distributor: parallel chunk upload to multiple peers
 - [x] 035 - distributor: upload progress tracking + resumable uploads
 - [x] 036 - distributor: file manifest creation and DHT publishing
-- [ ] 037 - distributor: IPFS-compatible CID generation
+- [x] 037 - distributor: IPFS-compatible CID generation
 - [ ] 038 - distributor: replication manager + target replication factor
 - [ ] 039 - distributor: smart peer selection algorithm
 - [ ] 040 - distributor: upload pipeline with backpressure
