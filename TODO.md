@@ -99,7 +99,7 @@
 - [x] 084 - api: rate limiting + request validation
 
 ## PHASE 8: TERMINAL UI (Commits 85-93)
-- [ ] 085 - tui: Bubbletea app skeleton + routing
+- [x] 085 - tui: Bubbletea app skeleton + routing
 - [ ] 086 - tui: main dashboard with live stats
 - [ ] 087 - tui: upload view with drag-drop + progress bars
 - [ ] 088 - tui: download view with speed graphs
