@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { Upload, File } from 'lucide-react'
 
 const FileManager = () => {
+  const progress = 45
+
   return (
     <div className="mt-8">
       <h2 className="text-xl font-semibold mb-4 text-white">Files</h2>
@@ -16,6 +18,21 @@ const FileManager = () => {
         <Upload className="text-vault-purple mb-2" size={32} />
         <p className="text-gray-400">Drag & drop files here, or click to browse</p>
       </motion.div>
+
+      {/* Progress Bar */}
+      <div className="mb-8">
+        <div className="flex justify-between text-sm text-gray-400 mb-2">
+          <span>Active Transfer</span>
+          <span>{progress}%</span>
+        </div>
+        <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${progress}%` }}
+            className="h-full bg-vault-purple"
+          />
+        </div>
+      </div>
 
       {/* File List */}
       <div className="space-y-3">
