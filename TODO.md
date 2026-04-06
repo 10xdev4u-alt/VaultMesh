@@ -18,7 +18,7 @@
 - [x] 015 - storage: chunk store with metadata indexing
 
 ## PHASE 2: NETWORK LAYER (Commits 16-30)
-- [ ] 016 - network: LibP2P host initialization with QUIC + TCP
+- [x] 016 - network: LibP2P host initialization with QUIC + TCP
 - [ ] 017 - network: identity management (PeerID, keypairs)
 - [ ] 018 - network: Kademlia DHT setup and configuration
 - [ ] 019 - network: mDNS local peer discovery
