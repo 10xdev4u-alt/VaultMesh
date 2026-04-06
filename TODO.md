@@ -31,7 +31,7 @@
 - [x] 026 - network: peer scoring and blacklisting
 - [x] 027 - network: WebRTC transport fallback
 - [x] 028 - network: bandwidth measurement + throttling
-- [ ] 029 - network: network topology mapper
+- [x] 029 - network: network topology mapper
 - [ ] 030 - network: peer exchange protocol (PEX)
 
 ## PHASE 3: DISTRIBUTION ENGINE (Commits 31-45)
