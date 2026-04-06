@@ -55,7 +55,7 @@
 - [x] 046 - retriever: onion routing for anonymous requests
 - [x] 047 - retriever: Private Information Retrieval (PIR) basic impl
 - [x] 048 - retriever: blind indexing - zero-knowledge storage proofs
-- [ ] 049 - retriever: adaptive chunk reassembly from erasure shards
+- [x] 049 - retriever: adaptive chunk reassembly from erasure shards
 - [ ] 050 - retriever: download resume from checkpoint
 - [ ] 051 - retriever: streaming decrypt pipeline (decrypt on-the-fly)
 - [ ] 052 - retriever: video/audio progressive streaming support
