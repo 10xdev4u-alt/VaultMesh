@@ -18,7 +18,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "q", "ctrl+c":
 			return m, tea.Quit
 		case "tab":
-			m.activeTab = (m.activeTab + 1) % 6
+			m.activeTab = (m.activeTab + 1) % 7
 		}
 	}
 	return m, nil
@@ -27,7 +27,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (m model) View() string {
 	doc := ""
 
-	tabs := []string{"Dashboard", "Browser", "Uploads", "Downloads", "Peers", "Network"}
+	tabs := []string{"Dashboard", "Browser", "Uploads", "Downloads", "Peers", "Network", "Settings"}
 	var renderedTabs []string
 	for i, t := range tabs {
 		if i == m.activeTab {
@@ -51,6 +51,8 @@ func (m model) View() string {
 		doc += PeerListView([]string{"QmNnooDu7bfjPFoTBsPWCcqS2S2s7aPvwVfN2p7rQdEaJs", "QmQCU2Ecws3N79txbcocFQ977XLeqM6K1Y78T9fG6t4q8G", "QmbLHAnMo96F8tA6yHArD9Nn7yS85tshx5G7nQfG7xN9qD"})
 	case 5:
 		doc += NetworkView()
+	case 6:
+		doc += SettingsView()
 	}
 
 	return doc + "\n\n (Q to quit)"

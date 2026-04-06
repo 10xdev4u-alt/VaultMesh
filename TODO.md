@@ -106,7 +106,7 @@
 - [x] 089 - tui: peer list view with health indicators
 - [x] 090 - tui: network topology visualization (ASCII art nodes)
 - [x] 091 - tui: file browser with search
-- [ ] 092 - tui: settings/config panel
+- [x] 092 - tui: settings/config panel
 - [ ] 093 - tui: Lipgloss theming system (dark/light)
 
 ## PHASE 9: WEB UI (Commits 94-103)
