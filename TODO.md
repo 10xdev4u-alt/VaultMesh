@@ -43,7 +43,7 @@
 - [x] 036 - distributor: file manifest creation and DHT publishing
 - [x] 037 - distributor: IPFS-compatible CID generation
 - [x] 038 - distributor: replication manager + target replication factor
-- [ ] 039 - distributor: smart peer selection algorithm
+- [x] 039 - distributor: smart peer selection algorithm
 - [ ] 040 - distributor: upload pipeline with backpressure
 - [ ] 041 - distributor: chunk verification after upload
 - [ ] 042 - distributor: metadata encryption before DHT storage
