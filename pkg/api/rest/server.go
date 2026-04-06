@@ -33,6 +33,7 @@ func NewServer(port int) *Server {
 
 func (s *Server) routes() {
 	s.router.POST("/upload", s.UploadHandler)
+	s.router.GET("/download/:cid", s.DownloadHandler)
 }
 
 // Start begins listening for API requests.

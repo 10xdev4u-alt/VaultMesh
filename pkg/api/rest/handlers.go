@@ -20,3 +20,17 @@ func (s *Server) UploadHandler(c *gin.Context) {
 		"size":     file.Size,
 	})
 }
+
+// DownloadHandler handles file retrieval requests.
+func (s *Server) DownloadHandler(c *gin.Context) {
+	cid := c.Param("cid")
+	if cid == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "missing cid"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "File download initiated",
+		"cid":     cid,
+	})
+}
