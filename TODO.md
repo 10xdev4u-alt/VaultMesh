@@ -20,7 +20,7 @@
 ## PHASE 2: NETWORK LAYER (Commits 16-30)
 - [x] 016 - network: LibP2P host initialization with QUIC + TCP
 - [x] 017 - network: identity management (PeerID, keypairs)
-- [ ] 018 - network: Kademlia DHT setup and configuration
+- [x] 018 - network: Kademlia DHT setup and configuration
 - [ ] 019 - network: mDNS local peer discovery
 - [ ] 020 - network: bootstrap peer list + DHT bootstrap
 - [ ] 021 - network: GossipSub for pub/sub messaging
