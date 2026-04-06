@@ -4,12 +4,16 @@ import (
 	"context"
 	"fmt"
 	"sync"
+	"sync/atomic"
 
 	"github.com/10xdev4u-alt/VaultMesh/internal/config"
 	"github.com/10xdev4u-alt/VaultMesh/internal/network"
 	"github.com/libp2p/go-libp2p/core/host"
 	"github.com/libp2p/go-libp2p/core/peer"
 )
+
+// ProgressCallback is a function that receives updates on the upload progress.
+type ProgressCallback func(uploaded, total int64)
 
 // Distributor coordinates the distribution of data shards across the network.
 type Distributor struct {
@@ -34,8 +38,8 @@ func NewDistributor(cfg *config.Config, h host.Host) (*Distributor, error) {
 	}, nil
 }
 
-// DistributeParallel splits the data and uploads shards in parallel to selected peers.
-func (d *Distributor) DistributeParallel(ctx context.Context, data []byte) error {
+// DistributeWithProgress uploads shards in parallel and reports progress via a callback.
+func (d *Distributor) DistributeWithProgress(ctx context.Context, data []byte, cb ProgressCallback) error {
 	shards, err := d.coder.Encode(data)
 	if err != nil {
 		return err
@@ -45,6 +49,9 @@ func (d *Distributor) DistributeParallel(ctx context.Context, data []byte) error
 	if err != nil {
 		return err
 	}
+
+	var uploadedShards int64
+	totalShards := int64(len(shards))
 
 	var wg sync.WaitGroup
 	errs := make(chan error, len(shards))
@@ -59,6 +66,12 @@ func (d *Distributor) DistributeParallel(ctx context.Context, data []byte) error
 			defer wg.Done()
 			if err := d.uploadShard(ctx, p, data); err != nil {
 				errs <- fmt.Errorf("failed to upload shard to %s: %w", p, err)
+				return
+			}
+			// Update progress
+			atomic.AddInt64(&uploadedShards, 1)
+			if cb != nil {
+				cb(atomic.LoadInt64(&uploadedShards), totalShards)
 			}
 		}(peers[i], shard)
 	}
