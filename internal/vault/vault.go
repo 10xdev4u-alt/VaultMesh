@@ -1,7 +1,10 @@
 package vault
 
 import (
+	"fmt"
 	"time"
+
+	"github.com/10xdev4u-alt/VaultMesh/internal/crypto"
 )
 
 // Vault represents a shared encrypted storage space.
@@ -35,4 +38,13 @@ func (m *VaultManager) CreateVault(id, name, owner string) *Vault {
 	}
 	m.Vaults[id] = v
 	return v
+}
+
+// ReconstructVaultKey uses Shamir's Secret Sharing to rebuild the master key from shards.
+func (m *VaultManager) ReconstructVaultKey(shards [][]byte) ([]byte, error) {
+	key, err := crypto.CombineShards(shards)
+	if err != nil {
+		return nil, fmt.Errorf("failed to reconstruct vault key: %w", err)
+	}
+	return key, nil
 }

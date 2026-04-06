@@ -76,7 +76,7 @@
 ## PHASE 6: COLLABORATIVE VAULTS & INCENTIVE (Commits 64-75)
 - [x] 064 - vault: collaborative vault creation
 - [x] 065 - vault: multi-signature file ownership
-- [ ] 066 - vault: threshold decryption (N-of-M)
+- [x] 066 - vault: threshold decryption (N-of-M)
 - [ ] 067 - vault: access control list per file/vault
 - [ ] 068 - incentive: node reputation scoring system
 - [ ] 069 - incentive: storage proof challenges (PoSt-lite)
