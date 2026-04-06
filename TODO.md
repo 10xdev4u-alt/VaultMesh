@@ -67,7 +67,7 @@
 - [x] 056 - healing: chunk availability scanner
 - [x] 057 - healing: automatic re-replication on node failure
 - [x] 058 - healing: predictive failure scoring per node
-- [ ] 059 - healing: repair scheduler with priority queue
+- [x] 059 - healing: repair scheduler with priority queue
 - [ ] 060 - healing: cross-shard repair without full decode
 - [ ] 061 - sync: delta sync engine (chunk-level diffing)
 - [ ] 062 - sync: version history with merkle DAG
