@@ -46,7 +46,7 @@ func (m model) View() string {
 	case 2:
 		doc += DownloadView("bafybeigdyrzt5sfp7udm7hu76uh7m", 12.5, "2m 15s")
 	case 3:
-		doc += "Peer List View (Coming Soon)"
+		doc += PeerListView([]string{"QmNnooDu7bfjPFoTBsPWCcqS2S2s7aPvwVfN2p7rQdEaJs", "QmQCU2Ecws3N79txbcocFQ977XLeqM6K1Y78T9fG6t4q8G", "QmbLHAnMo96F8tA6yHArD9Nn7yS85tshx5G7nQfG7xN9qD"})
 	}
 
 	return doc + "\n\n (Q to quit)"

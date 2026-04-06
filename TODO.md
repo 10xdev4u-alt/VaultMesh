@@ -103,7 +103,7 @@
 - [x] 086 - tui: main dashboard with live stats
 - [x] 087 - tui: upload view with drag-drop + progress bars
 - [x] 088 - tui: download view with speed graphs
-- [ ] 089 - tui: peer list view with health indicators
+- [x] 089 - tui: peer list view with health indicators
 - [ ] 090 - tui: network topology visualization (ASCII art nodes)
 - [ ] 091 - tui: file browser with search
 - [ ] 092 - tui: settings/config panel
