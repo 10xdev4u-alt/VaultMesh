@@ -107,7 +107,7 @@
 - [x] 090 - tui: network topology visualization (ASCII art nodes)
 - [x] 091 - tui: file browser with search
 - [x] 092 - tui: settings/config panel
-- [ ] 093 - tui: Lipgloss theming system (dark/light)
+- [x] 093 - tui: Lipgloss theming system (dark/light)
 
 ## PHASE 9: WEB UI (Commits 94-103)
 - [ ] 094 - web: Vite + React + TypeScript setup
