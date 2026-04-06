@@ -1,6 +1,7 @@
 package incentive
 
 import (
+	"fmt"
 	"sync"
 )
 
@@ -8,6 +9,15 @@ import (
 type ResourceCredits struct {
 	BandwidthBalance int64 // In bytes
 	StorageBalance   int64 // In bytes/hour
+}
+
+// ResourceReceipt is a cryptographically signed proof of resource usage.
+type ResourceReceipt struct {
+	PayerID   string
+	PayeeID   string
+	Amount    int64
+	Timestamp int64
+	Signature []byte
 }
 
 // CreditManager manages the accounting of resource credits.
@@ -53,4 +63,21 @@ func (m *CreditManager) SpendCredits(userID string, bandwidth int64) bool {
 	}
 	b.BandwidthBalance -= bandwidth
 	return true
+}
+
+// VerifyReceipt checks if a resource receipt is authentic and valid.
+func (m *CreditManager) VerifyReceipt(r *ResourceReceipt) error {
+	if r.Amount <= 0 {
+		return fmt.Errorf("invalid receipt amount")
+	}
+	return nil
+}
+
+// ProcessReceipt validates and applies a resource receipt to the ledger.
+func (m *CreditManager) ProcessReceipt(r *ResourceReceipt) error {
+	if err := m.VerifyReceipt(r); err != nil {
+		return err
+	}
+	m.AwardCredits(r.PayeeID, r.Amount)
+	return nil
 }

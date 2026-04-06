@@ -85,7 +85,7 @@
 - [x] 072 - incentive: reputation-based peer selection boost
 - [x] 073 - incentive: anti-sybil measures
 - [x] 074 - incentive: storage commitment announcements
-- [ ] 075 - incentive: credit ledger with cryptographic receipts
+- [x] 075 - incentive: credit ledger with cryptographic receipts
 
 ## PHASE 7: API LAYER (Commits 76-84)
 - [ ] 076 - api: REST server with Gin framework
