@@ -112,7 +112,7 @@
 ## PHASE 9: WEB UI (Commits 94-103)
 - [x] 094 - web: Vite + React + TypeScript setup
 - [x] 095 - web: design system (Tailwind + Framer Motion)
-- [ ] 096 - web: dashboard page with animated stats
+- [x] 096 - web: dashboard page with animated stats
 - [ ] 097 - web: file manager with drag-and-drop upload
 - [ ] 098 - web: real-time transfer progress with WebSocket
 - [ ] 099 - web: network graph visualization (D3.js)
