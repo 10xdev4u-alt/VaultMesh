@@ -79,7 +79,7 @@
 - [x] 066 - vault: threshold decryption (N-of-M)
 - [x] 067 - vault: access control list per file/vault
 - [x] 068 - incentive: node reputation scoring system
-- [ ] 069 - incentive: storage proof challenges (PoSt-lite)
+- [x] 069 - incentive: storage proof challenges (PoSt-lite)
 - [ ] 070 - incentive: proof verification without blockchain
 - [ ] 071 - incentive: bandwidth + storage credit tracking
 - [ ] 072 - incentive: reputation-based peer selection boost
