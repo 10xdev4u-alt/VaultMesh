@@ -48,7 +48,7 @@
 - [x] 041 - distributor: chunk verification after upload
 - [x] 042 - distributor: metadata encryption before DHT storage
 - [x] 043 - retriever: basic chunk retrieval from DHT
-- [ ] 044 - retriever: parallel multi-peer retrieval
+- [x] 044 - retriever: parallel multi-peer retrieval
 - [ ] 045 - retriever: streaming retrieval pipeline
 
 ## PHASE 4: PRIVACY & RETRIEVAL (Commits 46-57)

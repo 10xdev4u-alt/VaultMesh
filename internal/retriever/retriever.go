@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"sync"
 
 	"github.com/10xdev4u-alt/VaultMesh/internal/network"
 	dht "github.com/libp2p/go-libp2p-kad-dht"
@@ -39,6 +40,37 @@ func (r *Retriever) RetrieveShard(ctx context.Context, shardHash string) ([]byte
 
 	// For now, try the first provider
 	return r.downloadFromPeer(ctx, providers[0], shardHash)
+}
+
+// RetrieveShardsParallel downloads multiple shards in parallel.
+func (r *Retriever) RetrieveShardsParallel(ctx context.Context, shardHashes []string) ([][]byte, error) {
+	var wg sync.WaitGroup
+	shards := make([][]byte, len(shardHashes))
+	errs := make(chan error, len(shardHashes))
+
+	for i, hash := range shardHashes {
+		wg.Add(1)
+		go func(index int, h string) {
+			defer wg.Done()
+			data, err := r.RetrieveShard(ctx, h)
+			if err != nil {
+				errs <- fmt.Errorf("failed to retrieve shard %d (%s): %w", index, h, err)
+				return
+			}
+			shards[index] = data
+		}(i, hash)
+	}
+
+	wg.Wait()
+	close(errs)
+
+	for err := range errs {
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	return shards, nil
 }
 
 func (r *Retriever) downloadFromPeer(ctx context.Context, p peer.AddrInfo, hash string) ([]byte, error) {
