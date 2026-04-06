@@ -18,7 +18,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "q", "ctrl+c":
 			return m, tea.Quit
 		case "tab":
-			m.activeTab = (m.activeTab + 1) % 3
+			m.activeTab = (m.activeTab + 1) % 4
 		}
 	}
 	return m, nil
@@ -27,7 +27,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (m model) View() string {
 	doc := ""
 
-	tabs := []string{"Dashboard", "Uploads", "Peers"}
+	tabs := []string{"Dashboard", "Uploads", "Downloads", "Peers"}
 	var renderedTabs []string
 	for i, t := range tabs {
 		if i == m.activeTab {
@@ -44,6 +44,8 @@ func (m model) View() string {
 	case 1:
 		doc += UploadView("research_paper.pdf", 0.65)
 	case 2:
+		doc += DownloadView("bafybeigdyrzt5sfp7udm7hu76uh7m", 12.5, "2m 15s")
+	case 3:
 		doc += "Peer List View (Coming Soon)"
 	}
 
