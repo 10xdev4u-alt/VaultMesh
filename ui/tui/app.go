@@ -2,6 +2,7 @@ package tui
 
 import (
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss"
 )
 
 type model struct {
@@ -24,7 +25,29 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m model) View() string {
-	return "VaultMesh TUI (Press Tab to switch, Q to quit)"
+	doc := ""
+
+	tabs := []string{"Dashboard", "Files", "Peers"}
+	var renderedTabs []string
+	for i, t := range tabs {
+		if i == m.activeTab {
+			renderedTabs = append(renderedTabs, ActiveTabStyle.Render(t))
+		} else {
+			renderedTabs = append(renderedTabs, TabStyle.Render(t))
+		}
+	}
+	doc += lipgloss.JoinHorizontal(lipgloss.Top, renderedTabs...) + "\n\n"
+
+	switch m.activeTab {
+	case 0:
+		doc += DashboardView(12, 1050000000, 500, 1200)
+	case 1:
+		doc += "File Browser View (Coming Soon)"
+	case 2:
+		doc += "Peer List View (Coming Soon)"
+	}
+
+	return doc + "\n\n (Q to quit)"
 }
 
 func NewApp() *tea.Program {
