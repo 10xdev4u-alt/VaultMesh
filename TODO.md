@@ -44,7 +44,7 @@
 - [x] 037 - distributor: IPFS-compatible CID generation
 - [x] 038 - distributor: replication manager + target replication factor
 - [x] 039 - distributor: smart peer selection algorithm
-- [ ] 040 - distributor: upload pipeline with backpressure
+- [x] 040 - distributor: upload pipeline with backpressure
 - [ ] 041 - distributor: chunk verification after upload
 - [ ] 042 - distributor: metadata encryption before DHT storage
 - [ ] 043 - retriever: basic chunk retrieval from DHT

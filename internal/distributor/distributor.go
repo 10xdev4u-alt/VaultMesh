@@ -23,31 +23,37 @@ type Distributor struct {
 	coder     *ErasureCoder
 	host      host.Host
 	placement *PlacementStrategy
+	// semaphore limits the number of concurrent uploads (backpressure)
+	sem chan struct{}
 }
 
-// NewDistributor creates a new Distributor.
+// NewDistributor creates a new Distributor with a concurrency limit.
 func NewDistributor(cfg *config.Config, h host.Host) (*Distributor, error) {
 	coder, err := NewErasureCoder(cfg.Redundancy.DataShards, cfg.Redundancy.ParityShards)
 	if err != nil {
 		return nil, fmt.Errorf("failed to initialize erasure coder: %w", err)
 	}
 
+	// Default to 10 concurrent uploads for backpressure
+	concurrency := 10
+
 	return &Distributor{
 		cfg:       cfg,
 		coder:     coder,
 		host:      h,
-		placement: NewPlacementStrategy(h),
+		placement: NewPlacementStrategy(h, nil),
+		sem:       make(chan struct{}, concurrency),
 	}, nil
 }
 
-// DistributeWithProgress uploads shards in parallel and reports progress via a callback.
-func (d *Distributor) DistributeWithProgress(ctx context.Context, data []byte, cb ProgressCallback) error {
+// DistributeWithBackpressure uploads shards while respecting the concurrency limit.
+func (d *Distributor) DistributeWithBackpressure(ctx context.Context, data []byte, cb ProgressCallback) error {
 	shards, err := d.coder.Encode(data)
 	if err != nil {
 		return err
 	}
 
-	peers, err := d.placement.SelectBestPeers(ctx, len(shards))
+	peers, err := d.placement.SelectSmartPeers(ctx, len(shards))
 	if err != nil {
 		return err
 	}
@@ -63,14 +69,23 @@ func (d *Distributor) DistributeWithProgress(ctx context.Context, data []byte, c
 			break
 		}
 
+		// Acquire semaphore (backpressure)
+		select {
+		case d.sem <- struct{}{}:
+		case <-ctx.Done():
+			return ctx.Err()
+		}
+
 		wg.Add(1)
 		go func(p peer.ID, data []byte) {
 			defer wg.Done()
+			defer func() { <-d.sem }() // Release semaphore
+
 			if err := d.uploadShard(ctx, p, data); err != nil {
 				errs <- fmt.Errorf("failed to upload shard to %s: %w", p, err)
 				return
 			}
-			// Update progress
+			
 			atomic.AddInt64(&uploadedShards, 1)
 			if cb != nil {
 				cb(atomic.LoadInt64(&uploadedShards), totalShards)
