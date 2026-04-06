@@ -45,7 +45,7 @@
 - [x] 038 - distributor: replication manager + target replication factor
 - [x] 039 - distributor: smart peer selection algorithm
 - [x] 040 - distributor: upload pipeline with backpressure
-- [ ] 041 - distributor: chunk verification after upload
+- [x] 041 - distributor: chunk verification after upload
 - [ ] 042 - distributor: metadata encryption before DHT storage
 - [ ] 043 - retriever: basic chunk retrieval from DHT
 - [ ] 044 - retriever: parallel multi-peer retrieval

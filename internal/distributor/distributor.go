@@ -3,6 +3,7 @@ package distributor
 import (
 	"context"
 	"fmt"
+	"io"
 	"sync"
 	"sync/atomic"
 
@@ -115,6 +116,28 @@ func (d *Distributor) uploadShard(ctx context.Context, p peer.ID, data []byte) e
 
 	_, err = s.Write(data)
 	return err
+}
+
+// VerifyShard requests a hash from a peer to confirm they have the correct shard data.
+func (d *Distributor) VerifyShard(ctx context.Context, p peer.ID, expectedHash string) (bool, error) {
+	s, err := d.host.NewStream(ctx, p, network.ProtocolHealth)
+	if err != nil {
+		return false, fmt.Errorf("failed to open verification stream: %w", err)
+	}
+	defer s.Close()
+
+	if _, err := s.Write([]byte(expectedHash)); err != nil {
+		return false, err
+	}
+
+	buf := make([]byte, 64)
+	n, err := s.Read(buf)
+	if err != nil && err != io.EOF {
+		return false, err
+	}
+
+	actualHash := string(buf[:n])
+	return actualHash == expectedHash, nil
 }
 
 // PublishManifest saves the file manifest to the Kademlia DHT for global discovery.
