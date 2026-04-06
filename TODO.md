@@ -2,7 +2,7 @@
 
 ## PHASE 1: FOUNDATION (Commits 1-15)
 - [x] 001 - init: project scaffold, go.mod, Makefile, .gitignore, README.md, TODO.md
-- [ ] 002 - config: base configuration system with YAML/env support
+- [x] 002 - config: base configuration system with YAML/env support
 - [ ] 003 - config: add validation, defaults, and hot-reload support
 - [ ] 004 - crypto: implement AES-256-GCM encryption/decryption
 - [ ] 005 - crypto: add ChaCha20-Poly1305 as secondary cipher
