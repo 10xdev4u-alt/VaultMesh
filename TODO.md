@@ -49,11 +49,11 @@
 - [x] 042 - distributor: metadata encryption before DHT storage
 - [x] 043 - retriever: basic chunk retrieval from DHT
 - [x] 044 - retriever: parallel multi-peer retrieval
-- [ ] 045 - retriever: streaming retrieval pipeline
+- [x] 045 - retriever: streaming retrieval pipeline
 
 ## PHASE 4: PRIVACY & RETRIEVAL (Commits 46-57)
-- [ ] 046 - retriever: onion routing for anonymous requests
-- [ ] 047 - retriever: Private Information Retrieval (PIR) basic impl
+- [x] 046 - retriever: onion routing for anonymous requests
+- [x] 047 - retriever: Private Information Retrieval (PIR) basic impl
 - [ ] 048 - retriever: blind indexing - zero-knowledge storage proofs
 - [ ] 049 - retriever: adaptive chunk reassembly from erasure shards
 - [ ] 050 - retriever: download resume from checkpoint
