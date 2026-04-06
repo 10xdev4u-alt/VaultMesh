@@ -125,7 +125,7 @@
 - [x] 104 - cli: complete Cobra CLI with all subcommands
 - [x] 105 - cli: shell completion (bash/zsh/fish)
 - [x] 106 - docs: full README with architecture diagrams
-- [ ] 107 - docs: API documentation with examples
+- [x] 107 - docs: API documentation with examples
 - [ ] 108 - docs: security model documentation
 - [ ] 109 - docs: protocol specification
 - [ ] 110 - test: unit tests for crypto package (>90% coverage)
