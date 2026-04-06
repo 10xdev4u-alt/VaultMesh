@@ -89,7 +89,7 @@
 
 ## PHASE 7: API LAYER (Commits 76-84)
 - [x] 076 - api: REST server with Gin framework
-- [ ] 077 - api: upload endpoint with multipart streaming
+- [x] 077 - api: upload endpoint with multipart streaming
 - [ ] 078 - api: download endpoint with range requests
 - [ ] 079 - api: file listing, search, delete endpoints
 - [ ] 080 - api: peer management endpoints

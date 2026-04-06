@@ -14,18 +14,25 @@ type Server struct {
 	httpServer *http.Server
 }
 
-// NewServer creates a new REST API server.
+// NewServer creates a new REST API server and registers routes.
 func NewServer(port int) *Server {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 
-	return &Server{
+	s := &Server{
 		router: r,
 		httpServer: &http.Server{
 			Addr:    fmt.Sprintf(":%d", port),
 			Handler: r,
 		},
 	}
+
+	s.routes()
+	return s
+}
+
+func (s *Server) routes() {
+	s.router.POST("/upload", s.UploadHandler)
 }
 
 // Start begins listening for API requests.
