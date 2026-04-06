@@ -2,8 +2,10 @@ package retriever
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
+	"os"
 	"sync"
 
 	"github.com/10xdev4u-alt/VaultMesh/internal/distributor"
@@ -25,6 +27,34 @@ func NewRetriever(h host.Host, kdht *dht.IpfsDHT) *Retriever {
 		host: h,
 		kdht: kdht,
 	}
+}
+
+// Checkpoint stores the progress of an ongoing file retrieval.
+type Checkpoint struct {
+	FileID           string          `json:"file_id"`
+	DownloadedChunks map[string]bool `json:"downloaded_chunks"`
+}
+
+// SaveCheckpoint persists the retrieval progress to a file.
+func (r *Retriever) SaveCheckpoint(path string, cp Checkpoint) error {
+	data, err := json.Marshal(cp)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(path, data, 0644)
+}
+
+// LoadCheckpoint retrieves the saved progress from a file.
+func (r *Retriever) LoadCheckpoint(path string) (*Checkpoint, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+	var cp Checkpoint
+	if err := json.Unmarshal(data, &cp); err != nil {
+		return nil, err
+	}
+	return &cp, nil
 }
 
 // RetrieveShard finds a shard's location via DHT and downloads it.

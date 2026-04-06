@@ -56,7 +56,7 @@
 - [x] 047 - retriever: Private Information Retrieval (PIR) basic impl
 - [x] 048 - retriever: blind indexing - zero-knowledge storage proofs
 - [x] 049 - retriever: adaptive chunk reassembly from erasure shards
-- [ ] 050 - retriever: download resume from checkpoint
+- [x] 050 - retriever: download resume from checkpoint
 - [ ] 051 - retriever: streaming decrypt pipeline (decrypt on-the-fly)
 - [ ] 052 - retriever: video/audio progressive streaming support
 - [ ] 053 - retriever: IPFS gateway compatibility layer
