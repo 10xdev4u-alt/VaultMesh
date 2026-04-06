@@ -37,7 +37,7 @@
 ## PHASE 3: DISTRIBUTION ENGINE (Commits 31-45)
 - [x] 031 - distributor: Reed-Solomon erasure coding implementation
 - [x] 032 - distributor: configurable redundancy (N data + M parity)
-- [ ] 033 - distributor: chunk placement strategy (geo + latency aware)
+- [x] 033 - distributor: chunk placement strategy (geo + latency aware)
 - [ ] 034 - distributor: parallel chunk upload to multiple peers
 - [ ] 035 - distributor: upload progress tracking + resumable uploads
 - [ ] 036 - distributor: file manifest creation and DHT publishing
