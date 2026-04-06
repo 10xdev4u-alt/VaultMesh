@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )
 
@@ -55,7 +56,7 @@ type TUIConfig struct {
 }
 
 // Load loads the configuration from a file or environment variables.
-func Load(configPath string) (*Config, error) {
+func Load(configPath string, onReload func(newConfig *Config)) (*Config, error) {
 	v := viper.New()
 
 	if configPath != "" {
@@ -72,6 +73,9 @@ func Load(configPath string) (*Config, error) {
 	v.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	v.AutomaticEnv()
 
+	// Set default values
+	setDefaults(v)
+
 	if err := v.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
 			return nil, fmt.Errorf("error reading config file: %w", err)
@@ -83,5 +87,43 @@ func Load(configPath string) (*Config, error) {
 		return nil, fmt.Errorf("unable to decode into struct: %w", err)
 	}
 
+	if err := cfg.Validate(); err != nil {
+		return nil, fmt.Errorf("config validation failed: %w", err)
+	}
+
+	if onReload != nil {
+		v.WatchConfig()
+		v.OnConfigChange(func(e fsnotify.Event) {
+			var newCfg Config
+			if err := v.Unmarshal(&newCfg); err == nil {
+				if err := newCfg.Validate(); err == nil {
+					onReload(&newCfg)
+				}
+			}
+		})
+	}
+
 	return &cfg, nil
+}
+
+func setDefaults(v *viper.Viper) {
+	v.SetDefault("network.listen_addrs", []string{"/ip4/0.0.0.0/tcp/4001", "/ip4/0.0.0.0/udp/4001/quic-v1"})
+	v.SetDefault("storage.data_dir", "./data")
+	v.SetDefault("storage.chunk_size", 1024*1024) // 1MB default
+	v.SetDefault("storage.db_path", "./data/badger")
+	v.SetDefault("api.http_addr", ":8080")
+	v.SetDefault("api.grpc_addr", ":9090")
+	v.SetDefault("tui.theme", "dark")
+	v.SetDefault("crypto.key_path", "./keys/master.key")
+}
+
+// Validate ensures the configuration is valid.
+func (c *Config) Validate() error {
+	if c.Storage.ChunkSize <= 0 {
+		return fmt.Errorf("chunk_size must be greater than 0")
+	}
+	if c.Storage.DataDir == "" {
+		return fmt.Errorf("data_dir cannot be empty")
+	}
+	return nil
 }
