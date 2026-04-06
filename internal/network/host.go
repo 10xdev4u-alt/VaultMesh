@@ -17,7 +17,7 @@ type HostConfig struct {
 	PrivKey     crypto.PrivKey
 }
 
-// NewHost creates and initializes a libp2p host with the provided configuration.
+// NewHost creates and initializes a libp2p host with the provided configuration and NAT traversal enabled.
 func NewHost(ctx context.Context, cfg HostConfig) (host.Host, error) {
 	if len(cfg.ListenAddrs) == 0 {
 		cfg.ListenAddrs = []string{
@@ -33,6 +33,9 @@ func NewHost(ctx context.Context, cfg HostConfig) (host.Host, error) {
 			libp2p.Transport(quic.NewTransport),
 		),
 	}
+
+	// Add NAT traversal and Relay options
+	opts = append(opts, NATOptions()...)
 
 	if cfg.PrivKey != nil {
 		opts = append(opts, libp2p.Identity(cfg.PrivKey))

@@ -25,7 +25,7 @@
 - [x] 020 - network: bootstrap peer list + DHT bootstrap
 - [x] 021 - network: GossipSub for pub/sub messaging
 - [x] 022 - network: custom protocol definitions (upload/download/health)
-- [ ] 023 - network: NAT traversal with AutoNAT + relay
+- [x] 023 - network: NAT traversal with AutoNAT + relay
 - [ ] 024 - network: circuit relay for firewalled peers
 - [ ] 025 - network: connection manager with limits + scoring
 - [ ] 026 - network: peer scoring and blacklisting
