@@ -88,7 +88,7 @@
 - [x] 075 - incentive: credit ledger with cryptographic receipts
 
 ## PHASE 7: API LAYER (Commits 76-84)
-- [ ] 076 - api: REST server with Gin framework
+- [x] 076 - api: REST server with Gin framework
 - [ ] 077 - api: upload endpoint with multipart streaming
 - [ ] 078 - api: download endpoint with range requests
 - [ ] 079 - api: file listing, search, delete endpoints
